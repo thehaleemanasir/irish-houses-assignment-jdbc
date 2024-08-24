@@ -29,6 +29,12 @@ public class Property {
     private String photo;
     private double price;
     private Date dateAdded;
+    
+    /**
+     * isArchived indicates if the property is archived or not
+     * Part of Task 1
+     */
+    private boolean isArchived; 
 
     // Foreign keys are represented as objects
     private Style style;
