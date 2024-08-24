@@ -9,16 +9,13 @@ import java.util.Scanner;
 
 public class Update {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/ihl_db";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
 
     public static void main(String[] args) {
         updateProperty();
     }
 
     public static void updateProperty() {
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+        try (Connection connection = DatabaseUtility.getConnection();
              Scanner scanner = new Scanner(System.in)) {
 
             System.out.print("Enter the ID of the property you wish to update: ");
