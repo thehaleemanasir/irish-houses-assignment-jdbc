@@ -9,7 +9,7 @@ import java.sql.Date;
 
 public class JFakeProperties {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Faker faker = new Faker();
 
         // Specify the number of properties to generate
