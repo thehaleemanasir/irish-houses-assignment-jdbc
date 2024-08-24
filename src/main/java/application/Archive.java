@@ -55,7 +55,6 @@ public class Archive {
                 return resultSet.next();
             }
         }
-        return false;
     }
 
 
