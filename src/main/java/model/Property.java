@@ -34,7 +34,7 @@ public class Property {
      * isArchived indicates if the property is archived or not
      * Part of Task 1
      */
-    private boolean isArchived; 
+    private boolean archived;
 
     // Foreign keys are represented as objects
     private Style style;

@@ -18,15 +18,13 @@ public class Archive {
                 System.out.print("Enter the ID of the record to archive or unarchive: ");
                 int recordId = scanner.nextInt();
 
-                // Check if the user wants to archive or unarchive
                 System.out.print("Do you want to archive (A) or unarchive (U) the record? ");
                 String action = scanner.next().toUpperCase();
 
                 if (action.equals("A")) {
-                    // Archive the specified record
                     archiveRecord(connection, recordId);
+
                 } else if (action.equals("U")) {
-                    // Unarchive the specified record
                     unarchiveRecord(connection, recordId);
                 } else {
                     System.out.println("Invalid action. Please enter 'A' for archive or 'U' for unarchive.");
@@ -36,43 +34,31 @@ public class Archive {
     }
 
     private static void archiveRecord(Connection connection, int id) throws SQLException {
-        // Query to retrieve the record with the specified ID
-        String selectQuery = "SELECT * FROM properties WHERE id = ?";
-        try (PreparedStatement selectStatement = connection.prepareStatement(selectQuery)) {
-            selectStatement.setInt(1, id);
+        if(!isPropertyInDB(connection, id)) {
+            System.out.println("Record with ID " + id + " not found in the database.");
+            return;
+        }
 
-            try (ResultSet resultSet = selectStatement.executeQuery()) {
-                // Check if the record with the specified ID exists
-                if (resultSet.next()) {
-                    // Retrieve data from the result set
-                    int propertyID = resultSet.getInt("id");
-                    String street = resultSet.getString("street");
-                    String city = resultSet.getString("city");
+        String sql = "UPDATE properties SET archived = 1 WHERE id = ?;";
+        try (PreparedStatement archiveStatement = connection.prepareStatement(sql)) {
+            archiveStatement.setInt(1, id);
+            archiveStatement.executeUpdate();
+        }
+        System.out.println("Record with ID " + id + " archived into the table successfully.");
+    }
 
-                    archiveRecord(connection, id, propertyID, street, city);
-                } else {
-                    System.out.println("Record with ID " + id + " not found.");
-                }
+    private static boolean isPropertyInDB(Connection connection, int id) throws SQLException {
+        String query = "SELECT * FROM properties WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next();
             }
         }
+        return false;
     }
 
-    private static void archiveRecord(Connection connection, int id, int propertyID, String street, String city) {
 
-        String archiveQuery = "INSERT INTO archiveproperty (id, propertyID, street, city) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement archiveStatement = connection.prepareStatement(archiveQuery)) {
-            archiveStatement.setInt(1, id);
-            archiveStatement.setInt(2, propertyID);
-            archiveStatement.setString(3, street);
-            archiveStatement.setString(4, city);
-
-            archiveStatement.executeUpdate();
-            System.out.println("Record with ID " + id + " archived into the table successfully.");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     private static void unarchiveRecord(Connection connection, int id) {
         System.out.println("Trying to unarchive record with ID: " + id);
