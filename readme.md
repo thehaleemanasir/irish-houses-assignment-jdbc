@@ -5,7 +5,22 @@ Include a README for your project once you have completed it :point_down:
 
 About to start working on this!
 
-# week one
+## Requirements
+
+- Java 8
+- Maven
+- MySQL
+- IntelliJ IDEA
+
+## Install
+
+- Clone the repository
+- Setup the database
+- [ihl_db.sql](src/main/resources/ihl_db.sql)
+- Open the project in IntelliJ IDEA
+- 
+
+## Tasks
 
 - [ ] Update and archive function
 - [ ] Completed Archive function
