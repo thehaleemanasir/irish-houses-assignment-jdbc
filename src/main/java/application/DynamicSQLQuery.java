@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class DynamicSQLQuery {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         try (Connection connection = DatabaseUtility.getConnection()) {
             // Step 1: Prompt user for columns
             System.out.println("Enter columns to select (comma-separated or * for all): ");
@@ -107,13 +107,9 @@ public class DynamicSQLQuery {
         }
     }
 
-    private static void saveAsJsonFile(ResultSet resultSet) {
-        try {
-            exportToJSON(resultSet, "query_results.json");
-            System.out.println("Results saved to query_results.json.");
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
+    private static void saveAsJsonFile(ResultSet resultSet) throws SQLException, IOException {
+        exportToJSON(resultSet, "query_results.json");
+        System.out.println("Results saved to query_results.json.");
     }
 
     private static void exportToJSON(ResultSet resultSet, String filePath) throws IOException, SQLException {
@@ -140,6 +136,7 @@ public class DynamicSQLQuery {
             writer.write("]");
         }
     }
+
     private static void saveAsCsvFile(ResultSet resultSet) {
         try (FileWriter fileWriter = new FileWriter("query_results.csv")) {
             // Write column names
