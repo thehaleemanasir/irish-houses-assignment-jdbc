@@ -4,38 +4,40 @@
 
 IHL require you to develop an internal command-line application that will afford agents the following: 
 
-1. **Update and Archive(15 Marks).** 
+## Tasks
+
+### Task 1: Update and Archive (15 Marks)
 
 Develop a feature that allows users to archive a property that perhaps has been sold or perhaps has been removed from the market. Also create a feature that will allow a user to update a record for a given property. For example: 
 
 ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.002.png)
 
-*The screengrab above is just a guide, you can decide on the workflow of this task yourself.  Would it be considered user friendly to ask the user to entera styleId, typeId or agentId?* 
+*The screenshot above is just a guide, you can decide on the workflow of this task yourself.  Would it be considered user friendly to ask the user to entera styleId, typeId or agentId?* 
 
-2. **Dynamic Query Building and Generating Report (35 Marks).** 
+### Task 2: Dynamic Query Building and Generating Report (35 Marks)
 
 Develop a feature that allows users to dynamically build an SQL query. The application should prompt the user to select which columns to retrieve, specify filtering conditions, and choose a sorting preference. The application should then construct the SQL query based on user input and execute it against the database. A breakdown of this task is as follows: 
 
 1. Prompt the user to enter the columns they wish to select from the properties table. Allow them to input \* for all columns or specify individual column names separated by commas.  
-1. Ask the user if they want to filter the results based on certain conditions (e.g., bedrooms > 3, city = 'Limerick', price >= 350000.00). 
-1. Allow for multiple conditions and ensure the application correctly formats them into a WHERE clause with proper logical operators (AND, OR). 
+2. Ask the user if they want to filter the results based on certain conditions (e.g., bedrooms > 3, city = 'Limerick', price >= 350000.00). 
+3. Allow for multiple conditions and ensure the application correctly formats them into a WHERE clause with proper logical operators (AND, OR). 
 4. Query the user for sorting preferences, including the column to sort by and the order (ASC for ascending, DESC for descending). 
-4. Construct the SQL query string based on the inputs, ensuring the proper syntax is maintained (are you going to check for potential SQL injection vulnerabilities? Are you going to sanitise user inputs?). 
-4. Execute the constructed query against *ihl\_db* and handle any exceptions or errors that may occur during execution. 
-4. Display the query results to the user in a readable format (will pagination be provided?). 
-4. Provide the option for the user to save/export the search results to a text file, JSON or CSV. A suggestion here is to use the *Jackson* library for exporting to JSON  and *Apache Commons CSV f*or exporting to CSV. 
+5. Construct the SQL query string based on the inputs, ensuring the proper syntax is maintained (are you going to check for potential SQL injection vulnerabilities? Are you going to sanitise user inputs?). 
+6. Execute the constructed query against *ihl\_db* and handle any exceptions or errors that may occur during execution. 
+7. Display the query results to the user in a readable format (will pagination be provided?). 
+8. Provide the option for the user to save/export the search results to a text file, JSON or CSV. A suggestion here is to use the *Jackson* library for exporting to JSON  and *Apache Commons CSV f*or exporting to CSV. 
 
 ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.003.png)
 
-*The screengrab above is just a guide, you can decide on the workflow of this task yourself (along with the database search criteria).* 
+*The screenshot above is just a guide, you can decide on the workflow of this task yourself (along with the database search criteria).* 
 
-3. **Database Seeding and Generation (20 Marks).** 
+### Task 3: Database Seeding and Generation (20 Marks)
 
 Create a feature that seeds a database with generated data. This data should be structured and coherent, adhering to the schema's constraints, and should be realistic enough for testing purposes. You should allow for various degrees of complexity in data generation, from simple placeholder data to more complex, interrelated data that respects foreign key constraints and other database rules. Seeding data is crucial for creating a representative development and testing environment, allowing developers to simulate real-world scenarios and rigorously test application behaviour, performance, and data integrity without relying on production data. The feature might operate as follows: 
 
 ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.004.png)
 
-*Again, the screengrab above is just a guide, you can decide on the workflow of this task yourself.* 
+*Again, the screenshot above is just a guide, you can decide on the workflow of this task yourself.* 
 
 For generating and seeding the records, a suggestion is to use[ Java Faker.](https://github.com/DiUS/java-faker) Java Faker uses a variety of datasets to generate plausible values, and it can be localised to generate data appropriate for specific countries or cultures. This means that if you need a Spanish name or address, Java Faker can provide 
 
@@ -51,7 +53,7 @@ Output 1:
 
 ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.007.png)
 
-4. **Unique Feature (20 Marks).** 
+### Task 4: Unique Feature (20 Marks)
 
 You must add an additional feature to the application which must complement the existing functionality. 
 
@@ -63,11 +65,11 @@ Failure to demonstrate your work each week will see you forfeit the marks for th
 
 
 
-|**Demo** |**Week Beginning** |**Marks** |
-| - | - | - |
-|**#1** |13/11/2023 |3% |
-|**#2** |20/11/2023 |3% |
-|**#3** |27/11/2023 (FINAL DEMO) |4% |
+| **Demo** | **Week Beginning**      | **Marks** |
+|----------|-------------------------|----------:|
+| **#1**   | 13/11/2023              |        3% |
+| **#2**   | 20/11/2023              |        3% |
+| **#3**   | 27/11/2023 (FINAL DEMO) |        4% |
 
 **NOTE** ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.009.png)
 
@@ -77,7 +79,7 @@ If you decide to change the structure of the database, then you will need to add
 
 You are required to upload your final deliverable to Moodle as well as GitHub. 
 
-You **must** include a README for your project on Github once it has been completed. 
+You **must** include a README for your project on GitHub once it has been completed. 
 
 **Important Notice to All Students Regarding Project Demos ![](Aspose.Words.68e88ea5-062d-4df3-88de-efe335a9c15f.010.png)**
 
