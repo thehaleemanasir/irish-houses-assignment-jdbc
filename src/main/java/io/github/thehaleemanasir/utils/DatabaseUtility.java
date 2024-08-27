@@ -1,4 +1,4 @@
-package application;
+package io.github.thehaleemanasir.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

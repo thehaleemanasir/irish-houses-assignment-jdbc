@@ -1,6 +1,9 @@
-package application;
+package io.github.thehaleemanasir.repositories;
 
 import com.github.javafaker.Faker;
+import io.github.thehaleemanasir.utils.DatabaseUtility;
+import io.github.thehaleemanasir.utils.PropertyStatisticsJFaker;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

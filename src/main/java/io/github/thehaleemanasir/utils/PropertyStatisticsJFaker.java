@@ -1,4 +1,6 @@
-package application;// PropertyStatisticsJFaker class
+package io.github.thehaleemanasir.utils;// PropertyStatisticsJFaker class
+
+import io.github.thehaleemanasir.utils.DatabaseUtility;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

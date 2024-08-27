@@ -1,4 +1,4 @@
-package model;
+package io.github.thehaleemanasir.model;
 import lombok.*;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
