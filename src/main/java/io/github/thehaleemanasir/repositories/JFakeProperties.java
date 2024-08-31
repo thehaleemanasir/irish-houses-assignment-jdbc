@@ -16,9 +16,9 @@ public class JFakeProperties {
         Faker faker = new Faker();
 
         // Specify the number of properties to generate
-      int numberOfProperties = 5;
+        int numberOfProperties = 5;
 
-        for (int i = 0; i < numberOfProperties ; i++) {
+        for (int i = 0; i < numberOfProperties; i++) {
             // Generate synthetic data for a property
             String street = faker.address().streetAddress();
             String city = faker.address().city();
@@ -42,7 +42,7 @@ public class JFakeProperties {
             insertPropertyData(street, city, listingNum, styleId, typeId, bedrooms, bathrooms,
                     squareFeet, berRating, description, lotSize, garageSize,
                     garageId, agentId, photo, price, dateAdded);
-       }
+        }
 
         PropertyStatisticsJFaker.displayPropertyStatistics();
     }
@@ -50,7 +50,7 @@ public class JFakeProperties {
     private static void insertPropertyData(String street, String city, int listingNum, int styleId,
                                            int typeId, int bedrooms, int bathrooms, int squareFeet,
                                            String berRating, String description, int lotSize, int garageSize,
-                                           int garageId, int agentId, String photo, BigDecimal price, Date dateAdded) {
+                                           int garageId, int agentId, String photo, BigDecimal price, Date dateAdded) throws SQLException {
         try (Connection connection = DatabaseUtility.getConnection()) {
             String sql = "INSERT INTO properties (street, city, listingNum, styleId, typeId, bedrooms, bathrooms," +
                     "squareFeet, berRating, description, lotSize, garageSize, garageId, agentId, photo, " +
@@ -76,8 +76,6 @@ public class JFakeProperties {
                 preparedStatement.executeUpdate();
                 System.out.println("Property data inserted successfully!");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 }

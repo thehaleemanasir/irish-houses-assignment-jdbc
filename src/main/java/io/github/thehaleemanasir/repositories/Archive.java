@@ -1,5 +1,6 @@
 package io.github.thehaleemanasir.repositories;
 
+import io.github.thehaleemanasir.model.Property;
 import io.github.thehaleemanasir.utils.DatabaseUtility;
 
 import java.sql.Connection;
@@ -13,16 +14,15 @@ public class Archive {
 
 
     public static void archiveRecord(Connection connection, int id) throws SQLException {
-        if(!isPropertyInDB(connection, id)) {
+        PropertyRepository propertyRepository = new PropertyRepository(connection);
+
+        Property property = propertyRepository.getPropertyById(id);
+        if(property ==null) {
             System.out.println("Record with ID " + id + " not found in the database.");
             return;
         }
-
-        String sql = "UPDATE properties SET archived = 1 WHERE id = ?;";
-        try (PreparedStatement archiveStatement = connection.prepareStatement(sql)) {
-            archiveStatement.setInt(1, id);
-            archiveStatement.executeUpdate();
-        }
+        property.setArchived(true);
+        propertyRepository.archiveProperty(property);
         System.out.println("Record with ID " + id + " archived into the table successfully.");
     }
 

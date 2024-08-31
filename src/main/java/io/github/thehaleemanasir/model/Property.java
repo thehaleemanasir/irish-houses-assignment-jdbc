@@ -18,12 +18,12 @@ public class Property {
     private int typeId;
     private int bedrooms;
     private float bathrooms;
-    private int squarefeet;
+    private int squareFeet;
     private String berRating;
     @ToStringExclude
     private String description;
-    private String lotsize;
-    private byte garagesize; // tinyint maps to byte in Java
+    private String lotSize;
+    private byte garageSize; // tinyint maps to byte in Java
     private int garageId;
     private int agentId;
     private String photo;
