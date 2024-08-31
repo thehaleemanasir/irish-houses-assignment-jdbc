@@ -13,7 +13,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 /**
  * Repository class using Java Beans for the Property model
  */
-public class PropertyBeanRepository {
+public class PropertyBeanRepository implements PropertyRepository {
 
     private final Connection connection;
 

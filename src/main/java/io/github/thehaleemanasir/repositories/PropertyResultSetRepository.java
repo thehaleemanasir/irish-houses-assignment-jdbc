@@ -13,7 +13,8 @@ import java.util.List;
 /**
  * Repository class using ResultSets for the Property model
  */
-public class PropertyResultSetRepository {
+
+public class PropertyResultSetRepository implements PropertyRepository {
 
     private final Connection connection;
 
