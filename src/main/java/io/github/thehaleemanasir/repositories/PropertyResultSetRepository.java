@@ -10,11 +10,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PropertyRepository {
+/**
+ * Repository class using ResultSets for the Property model
+ */
+public class PropertyResultSetRepository {
 
     private final Connection connection;
 
-    public PropertyRepository(Connection connection) {
+    public PropertyResultSetRepository(Connection connection) {
         this.connection = connection;
     }
 
@@ -26,7 +29,8 @@ public class PropertyRepository {
      * @throws SQLException If an error occurs while creating the property
      */
     public int createProperty(Property property) throws SQLException {
-        String sql = "INSERT INTO properties (Street, City, ListingNum, StyleId, TypeId, Bedrooms, Bathrooms, SquareFeet, " +
+        String sql = "INSERT INTO properties (Street, City, ListingNum, StyleId, TypeId, Bedrooms, Bathrooms, SquareFeet, "
+                +
                 "BerRating, Description, LotSize, GarageSize, GarageId, AgentId, Photo, Price, DateAdded) " +
                 "VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -74,6 +78,7 @@ public class PropertyRepository {
 
     /**
      * Get all archived properties associated with a specific agent
+     * 
      * @param agentId The ID of the agent
      * @return A list of properties that are archived for the agent
      * @throws SQLException If an error occurs while fetching the properties
@@ -104,7 +109,6 @@ public class PropertyRepository {
             }
         }
     }
-
 
     private Property mapResultSetToProperty(ResultSet resultSet) throws SQLException {
         Property property = new Property();
@@ -151,8 +155,10 @@ public class PropertyRepository {
     }
 
     public void updateProperty(Property property) throws SQLException {
-        String sql = "UPDATE properties SET Street = ?, City = ?, ListingNum = ?, StyleId = ?, TypeId = ?, Bedrooms = ?, " +
-                "Bathrooms = ?, SquareFeet = ?, BerRating = ?, Description = ?, LotSize = ?, GarageSize = ?, GarageId = ?, " +
+        String sql = "UPDATE properties SET Street = ?, City = ?, ListingNum = ?, StyleId = ?, TypeId = ?, Bedrooms = ?, "
+                +
+                "Bathrooms = ?, SquareFeet = ?, BerRating = ?, Description = ?, LotSize = ?, GarageSize = ?, GarageId = ?, "
+                +
                 "AgentId = ?, Photo = ?, Price = ?, DateAdded = ? WHERE Id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, property.getStreet());
