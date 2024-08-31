@@ -147,15 +147,15 @@ public class PropertyResultSetRepository implements PropertyRepository {
         }
     }
 
-    public void archiveProperty(Property property) throws SQLException {
+    public boolean archiveProperty(Property property) throws SQLException {
         String sql = "UPDATE properties SET archived = 1 WHERE id = ?;";
         try (PreparedStatement archiveStatement = connection.prepareStatement(sql)) {
             archiveStatement.setInt(1, property.getId());
-            archiveStatement.executeUpdate();
+            return archiveStatement.executeUpdate() > 0;
         }
     }
 
-    public void updateProperty(Property property) throws SQLException {
+    public boolean updateProperty(Property property) throws SQLException {
         String sql = "UPDATE properties SET Street = ?, City = ?, ListingNum = ?, StyleId = ?, TypeId = ?, Bedrooms = ?, "
                 +
                 "Bathrooms = ?, SquareFeet = ?, BerRating = ?, Description = ?, LotSize = ?, GarageSize = ?, GarageId = ?, "
@@ -180,7 +180,7 @@ public class PropertyResultSetRepository implements PropertyRepository {
             preparedStatement.setDouble(16, property.getPrice());
             preparedStatement.setDate(17, new java.sql.Date(property.getDateAdded().getTime()));
             preparedStatement.setInt(18, property.getId());
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         }
 
     }

@@ -1,3 +1,5 @@
+package io.github.thehaleemanasir.repositories;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public interface PropertyRepository {
 
     List<Property> getAllProperties() throws SQLException;
 
-    void archiveProperty(Property property) throws SQLException;
+    boolean archiveProperty(Property property) throws SQLException;
 
-    void updateProperty(Property property) throws SQLException;
+    boolean updateProperty(Property property) throws SQLException;
 }

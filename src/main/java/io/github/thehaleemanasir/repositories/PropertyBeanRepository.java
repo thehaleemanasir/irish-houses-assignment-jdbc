@@ -110,7 +110,7 @@ public class PropertyBeanRepository implements PropertyRepository {
         return runner.update(connection, sql, property.getId()) > 0;
     }
 
-    public void updateProperty(Property property) throws SQLException {
+    public boolean updateProperty(Property property) throws SQLException {
         String sql = "UPDATE properties SET Street = ?, City = ?, ListingNum = ?, StyleId = ?, TypeId = ?, Bedrooms = ?, "
                 +
                 "Bathrooms = ?, SquareFeet = ?, BerRating = ?, Description = ?, LotSize = ?, GarageSize = ?, GarageId = ?, "
@@ -138,6 +138,6 @@ public class PropertyBeanRepository implements PropertyRepository {
         };
 
         final QueryRunner runner = new QueryRunner();
-        runner.update(connection, sql, params);
+        return runner.update(connection, sql, params) > 0;
     }
 }
