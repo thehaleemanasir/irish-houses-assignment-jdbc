@@ -83,6 +83,7 @@ public class DynamicSQLQuery {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            scanner.close();
         }
     }
 
